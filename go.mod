@@ -1,4 +1,4 @@
-module github.com/rakyll/gotest
+module github.com/peutes/gotest
 
 go 1.14
 
