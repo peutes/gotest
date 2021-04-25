@@ -122,6 +122,8 @@ func parse(line string) {
 	case strings.HasPrefix(trimmed, "ok"):
 		fallthrough
 	case strings.HasPrefix(trimmed, "PASS"):
+		fallthrough
+	case strings.HasPrefix(trimmed, "=== RUN"):
 		c = pass
 
 	// skipped
@@ -132,9 +134,12 @@ func parse(line string) {
 	case strings.HasPrefix(trimmed, "--- FAIL"):
 		fallthrough
 	case strings.HasPrefix(trimmed, "FAIL"):
+		fallthrough
+	case strings.Contains(trimmed, "Error"):
 		c = fail
 	}
 
+	
 	color.Set(c)
 	fmt.Printf("%s\n", line)
 }
